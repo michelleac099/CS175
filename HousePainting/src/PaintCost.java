@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class PaintCost {
 
@@ -5,6 +6,8 @@ public class PaintCost {
 		/*
 		 * This program will calculate the cost to paint a house.
 		 */
+		
+		//Declaring most of the variables being used
 		double houseLengthFeet;
 		double houseLengthInches;
 		double houseWidthFeet;
@@ -27,7 +30,83 @@ public class PaintCost {
 		double sqFtWindows;
 		double sqFtDoors;
 		
+		//Asking for user input on the measurements.
+		Scanner in = new Scanner(System.in);
+		System.out.print("Please enter the length of the house in feet: ");
+		houseLengthFeet = in.nextDouble();
 		
+		System.out.print("Please enter the length of the house in inches: ");
+		houseLengthInches = in.nextDouble();
+		
+		System.out.print("Please enter the width of the house in feet: ");
+		houseWidthFeet = in.nextDouble();
+		
+		System.out.print("Please enter the width of the house in inches: ");
+		houseWidthInches = in.nextDouble();
+		
+		System.out.print("Please enter the height of the house in feet: ");
+		houseHeightFeet = in.nextDouble();
+		
+		System.out.print("Please enter the height of the house in inches: ");
+		houseHeightInches = in.nextDouble();
+		
+		System.out.print("Please enter the length of the windows in feet: ");
+		windowLengthFeet = in.nextDouble();
+		
+		System.out.print("Please enter the length of the windows in inches: ");
+		windowLengthInches = in.nextDouble();
+		
+		System.out.print("Please enter the width of the windows in feet: ");
+		windowWidthFeet = in.nextDouble();
+		
+		System.out.print("Please enter the width of the windows in inches: ");
+		windowWidthInches = in.nextDouble();
+		
+		System.out.print("Please enter the number of windows: ");
+		windowNumber = in.nextInt();
+		
+		System.out.print("Please enter the length of the doors in feet: ");
+		doorLengthFeet = in.nextDouble();
+		
+		System.out.print("Please enter the length of the doors in inches: ");
+		doorLengthInches = in.nextDouble();
+		
+		System.out.print("Please enter the width of the doors in feet: ");
+		doorWidthFeet = in.nextDouble();
+		
+		System.out.print("Please enter the width of the doors in inches: ");
+		doorWidthInches = in.nextDouble();
+		
+		System.out.print("Please enter the number of doors: ");
+		doorNumber = in.nextInt();
+		
+		System.out.print("Please enter the paint cost per square inch: ");
+		sqFtCost = in.nextDouble();
+		
+		//Converting the length, width and height inch measurements to feet and adding to the initial feet measurements.
+		double houseLengthFinal = houseLengthFeet + (houseLengthInches/12);
+		double houseWidthFinal = houseWidthFeet + (houseWidthInches/12);
+		double houseHeightFinal = houseHeightFeet + (houseHeightInches/12);
+		double windowWidthFinal = windowWidthFeet + (windowWidthInches/12);
+		double windowLengthFinal = windowLengthFeet + (windowLengthInches/12);
+		double doorWidthFinal = doorWidthFeet + (doorWidthInches/12);
+		double doorLengthFinal = doorLengthFeet + (doorLengthInches/12);
+		
+		//Calculations for house side, window and door surface areas
+		sqFtNormal = houseLengthFinal * houseWidthFinal;
+		sqFtPeak = (houseLengthFinal * houseWidthFinal) + ((houseLengthFinal*(houseHeightFinal - houseWidthFinal))/2);
+		sqFtWindows = (windowLengthFinal * windowWidthFinal) * windowNumber;
+		sqFtDoors = (doorLengthFinal * doorWidthFinal) * doorNumber;
+		
+		//Subtracting the window and door area from the total house area
+		double sqFtHouse = (sqFtNormal * 2) + (sqFtPeak * 2);
+		double sqFtHouseMinusDW = sqFtHouse - (sqFtDoors + sqFtWindows);
+		
+		//Final cost is net house area * painter's cost
+		double finalCost = sqFtHouseMinusDW * sqFtCost;
+		
+		System.out.println(" ");
+		System.out.printf("The cost to paint this house is: $%.2f", finalCost);
 		
 	}
 
