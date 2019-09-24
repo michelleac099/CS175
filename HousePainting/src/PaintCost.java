@@ -80,7 +80,7 @@ public class PaintCost {
 		System.out.print("Please enter the number of doors: ");
 		doorNumber = in.nextInt();
 		
-		System.out.print("Please enter the paint cost per square inch: ");
+		System.out.print("Please enter the paint cost per square foot: ");
 		sqFtCost = in.nextDouble();
 		
 		//Converting the length, width and height inch measurements to feet and adding to the initial feet measurements.
@@ -92,9 +92,9 @@ public class PaintCost {
 		double doorWidthFinal = doorWidthFeet + (doorWidthInches/12);
 		double doorLengthFinal = doorLengthFeet + (doorLengthInches/12);
 		
-		//Calculations for house side, window and door surface areas
-		sqFtNormal = houseLengthFinal * houseWidthFinal;
-		sqFtPeak = (houseLengthFinal * houseWidthFinal) + ((houseLengthFinal*(houseHeightFinal - houseWidthFinal))/2);
+		//Calculations for house sides, window and door surface areas
+		sqFtNormal = houseLengthFinal * houseWidthFinal; //L*W
+		sqFtPeak = (houseLengthFinal * houseWidthFinal) + ((houseLengthFinal*(houseHeightFinal - houseWidthFinal))/2); //L*W + 1/2(L*(H-W)) 
 		sqFtWindows = (windowLengthFinal * windowWidthFinal) * windowNumber;
 		sqFtDoors = (doorLengthFinal * doorWidthFinal) * doorNumber;
 		
