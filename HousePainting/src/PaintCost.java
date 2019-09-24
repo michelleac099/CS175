@@ -7,7 +7,7 @@ public class PaintCost {
 		 * This program will calculate the cost to paint a house.
 		 */
 		
-		//Declaring most of the variables being used
+		//Declaring most of the variables that will be used
 		double houseLengthFeet;
 		double houseLengthInches;
 		double houseWidthFeet;
@@ -29,8 +29,11 @@ public class PaintCost {
 		double sqFtNormal;
 		double sqFtWindows;
 		double sqFtDoors;
-		
-		//Asking for user input on the measurements.
+
+		/*
+		 * Asking for user input on the measurements. 
+		 * Foot + inch measurements are requested in order to be more user-friendly.
+		 */
 		Scanner in = new Scanner(System.in);
 		System.out.print("Please enter the length of the house in feet: ");
 		houseLengthFeet = in.nextDouble();
@@ -91,8 +94,9 @@ public class PaintCost {
 		double windowLengthFinal = windowLengthFeet + (windowLengthInches/12);
 		double doorWidthFinal = doorWidthFeet + (doorWidthInches/12);
 		double doorLengthFinal = doorLengthFeet + (doorLengthInches/12);
+		//Variables with Final in the name will be used for calculations, as they are the addition of feet + inches.
 		
-		//Calculations for house sides, window and door surface areas
+		//Calculations for house sides, window, and door surface areas
 		sqFtNormal = houseLengthFinal * houseWidthFinal; //L*W
 		sqFtPeak = (houseLengthFinal * houseWidthFinal) + ((houseLengthFinal*(houseHeightFinal - houseWidthFinal))/2); //L*W + 1/2(L*(H-W)) 
 		sqFtWindows = (windowLengthFinal * windowWidthFinal) * windowNumber;
@@ -105,9 +109,11 @@ public class PaintCost {
 		//Final cost is net house area * painter's cost
 		double finalCost = sqFtHouseMinusDW * sqFtCost;
 		
+		//Displaying the final cost to the user
 		System.out.println(" ");
-		System.out.printf("The cost to paint this house is: $%.2f", finalCost);
+		System.out.printf("The cost to paint this house is: $%.2f", finalCost); 
+		//%.2f ensures that the cost will be displayed in proper dollar format
 		
-	}
+	} //main
 
-}
+} //class
